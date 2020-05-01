@@ -33,13 +33,15 @@ class AppServiceProvider extends ServiceProvider
             elseif($key === 1) $favicon = $setting->value;
             elseif($key === 2) $front_logo = $setting->value; 
             elseif($key === 3) $admin_logo = $setting->value;  
+            elseif($key === 4) $copyright = $setting->value;  
         }
 
         $shareData = array(
             'system_name'=>$system_name,
             'favicon'=>$favicon,
             'front_logo'=>$front_logo,
-            'admin_logo'=>$admin_logo
+            'admin_logo'=>$admin_logo,
+            'copyright'=>$copyright
            );
            view()->share('shareData',$shareData);
     }

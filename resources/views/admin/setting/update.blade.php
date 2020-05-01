@@ -56,6 +56,12 @@
                                           
                 {{ Form::text('name',$system_name,['class'=>'form-control','id'=>'name'] )  }}
                                     </div>
+
+                                  <div class="form-group">
+                {{ Form::label('copyright', 'Copyright', array('class' => 'control-label mb-1')) }}
+                                          
+                {{ Form::text('copyright',$copyright,['class'=>'form-control','id'=>'copyright'] )  }}
+                                  </div>
     
       <div class="form-group">
     <p>

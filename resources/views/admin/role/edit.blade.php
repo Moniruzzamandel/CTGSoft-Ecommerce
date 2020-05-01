@@ -29,6 +29,9 @@
                 <div class="card">
                     <div class="card-header">
                         <strong class="card-title">Edit Role - {{ $role->name }}</strong>
+                        <div class="card-tools">
+                            <a href="{{ route('role.index') }}" type="button" class="btn btn-outline-info btn-sm pull-right"><i class="fa fa-left-arrow"></i>&nbsp; Back To Role List</a>
+                        </div>
                     </div>
                     <div class="card-body">
                       <!-- Credit Card -->

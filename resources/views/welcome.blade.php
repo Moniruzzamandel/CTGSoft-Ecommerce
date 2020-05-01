@@ -1,99 +1,85 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('front.layouts.master')
 
-        <title>Laravel</title>
+@section('content')
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+<div class="content-wrapper">
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+        <div class="container">
+            <div class="row pt120">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <div class="heading align-center mb60">
+                        <h4 class="h1 heading-title">Chittagong Soft Ecommerce</h4>
+                        <p class="heading-text">Buy mobile, laptop, desktop and we ship to you.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
-    </body>
-</html>
+    
+        <!-- End Books products grid -->
+    
+        <div class="container">
+            <div class="row pt120">
+                <div class="books-grid">
+    
+                <div class="row mb30">
+                    @foreach ($products as $product)
+
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" style="margin-bottom: 20px;">
+                            <div class="books-item">
+                                <div class="books-item-thumb">
+                                    {{-- <img src="{{ asset('front/img/book6.png') }}" alt="book"> --}}
+                                    <img src="{{ asset('product') }}/{{ $product->thumb_image }} " class="img img-responsive">
+                                    <div class="new">New</div>
+                                    <div class="sale">Sale</div>
+                                    <div class="overlay overlay-books"></div>
+                                </div>
+        
+                                <div class="books-item-info">
+                                    <h5 class="books-title">{{ $product->title }}</h5>
+        
+                                    <div class="books-price">BDT {{ $product->price }}</div>
+                                </div>
+        
+                                <a href="19_cart.html" class="btn btn-small btn--dark add">
+                                    <span class="text">Add to Cart</span>
+                                    <i class="seoicon-commerce"></i>
+                                </a>
+        
+                            </div>
+                        </div>
+                        
+                    @endforeach
+                    
+                </div>
+                   
+                <div class="row pb120">
+    
+                    <div class="col-lg-12">
+                        {{ $products->links() }} 
+                        <nav class="navigation align-center">
+    
+                            <a href="#" class="page-numbers bg-border-color current"><span>1</span></a>
+                            <a href="#" class="page-numbers bg-border-color"><span>2</span></a>
+                            <a href="#" class="page-numbers bg-border-color"><span>3</span></a>
+                            <a href="#" class="page-numbers bg-border-color"><span>4</span></a>
+                            <a href="#" class="page-numbers bg-border-color"><span>5</span></a>
+    
+                            <svg class="btn-prev">
+                                <use xlink:href="#arrow-left"></use>
+                            </svg>
+                            <svg class="btn-next">
+                                <use xlink:href="#arrow-right"></use>
+                            </svg>
+    
+                        </nav>
+    
+                    </div>
+    
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+
+@endsection

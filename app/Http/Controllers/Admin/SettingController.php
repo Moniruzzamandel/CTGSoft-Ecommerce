@@ -18,12 +18,15 @@ class SettingController extends Controller
         $front = $front->value;
         $admin_logo = Setting::find(4);
         $admin = $admin_logo->value;
-    	return view('admin.setting.update',compact('page_name','system_name','front','fav','admin'));
+        $copyright_text = Setting::find(5);
+        $copyright = $copyright_text->value;
+    	return view('admin.setting.update',compact('page_name','system_name','front','fav','admin','copyright'));
     }
 
     public function update(Request $request){
         $this->validate($request,[
-        'name'=>'required'
+        'name'=>'required',
+        'copyright'=>'required'
         ]);
 
         $fav_settings = Setting::find(2);
@@ -64,6 +67,10 @@ class SettingController extends Controller
     $sys_settings = Setting::find(1);
     $sys_settings->value = $request->name;
     $sys_settings->save();
+
+    $copy_settings = Setting::find(5);
+    $copy_settings->value = $request->copyright;
+    $copy_settings->save();
 
     return redirect()->action('Admin\SettingController@index');
     

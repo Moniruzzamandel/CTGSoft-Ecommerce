@@ -20,7 +20,7 @@ class AuthorController extends Controller
     public function index()
     {
         $page_name = "Authors List";
-        $data = User::where('type', 2)->get();
+        $data = User::latest()->get();
         //dd($authors);
         return view('admin.author.index', compact('page_name', 'data'));
     }

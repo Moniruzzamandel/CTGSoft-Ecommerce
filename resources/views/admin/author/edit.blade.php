@@ -29,6 +29,9 @@
                 <div class="card">
                     <div class="card-header">
                         <strong class="card-title">Edit Author - {{ $author->name }}</strong>
+                        <div class="card-tools">
+                            <a href="{{ route('author.index') }}" type="button" class="btn btn-outline-info btn-sm pull-right"><i class="fa fa-left-arrow"></i>&nbsp; Back To Permission List</a>
+                        </div>
                     </div>
                     <div class="card-body">
                       <!-- Credit Card -->
